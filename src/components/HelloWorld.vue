@@ -25,7 +25,7 @@
         <td>{{msg.data.data.yesterday.fx}}</td>
         <td>{{msg.data.data.yesterday.type}}</td>
       </tr>
-      <tr v-for="ms in msg.data.data.forecast">
+      <tr v-for="ms in msg.data.data.forecast" :key="ms.date">
         <td>{{ms.date}}</td>
         <td>{{ms.high}}</td>
         <td>{{ms.fengli}}</td>
