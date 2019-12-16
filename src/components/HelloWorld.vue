@@ -2,6 +2,7 @@
   <div class="hello">
     <!-- <h2>{{msg}}</h2> -->
     <h1>{{ msg.data.data.city }}天气预报</h1>
+    <p>时间：{{time}}</p>
     <p>现在温度:{{msg.data.data.wendu}}℃</p>
     <p>感冒指数:{{msg.data.data.ganmao}}</p>
     <div>
@@ -54,7 +55,8 @@
     data() {
       return {
         msg: "",
-        city: "石家庄"
+        city: "石家庄",
+        time: ""
       };
     },
     mounted() {
@@ -65,6 +67,8 @@
           console.log(err);
           alert(err);
         });
+      this.datetime();
+      setInterval(this.datetime, 1000);
     },
     methods: {
       submit: function() {
@@ -91,6 +95,10 @@
               alert(err);
             });
         }
+      },
+      datetime() {
+        var myDateTime = new Date();
+        this.time = myDateTime.toLocaleString();
       }
     }
   };
